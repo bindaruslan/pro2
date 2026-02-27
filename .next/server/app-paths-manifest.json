@@ -1,0 +1,6 @@
+{
+  "/api/laws/route": "app/api/laws/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/page": "app/page.js",
+  "/novyny/[slug]/page": "app/novyny/[slug]/page.js"
+}
