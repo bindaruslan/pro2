@@ -1,7 +1,8 @@
 ﻿import type { Metadata } from "next";
+import Link from "next/link";
 import JsonLd from "@/components/seo/JsonLd";
 import { HOMEPAGE_SEO, LANDING_PAGES, SITE_URL } from "@/content/seo-pages";
-import { getAllLawArticles } from "@/utils/laws";
+import { getPublicLawArticles } from "@/utils/laws";
 
 export const metadata: Metadata = {
   title: HOMEPAGE_SEO.seoTitle,
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const latestArticles = getAllLawArticles().slice(0, 3);
+  const latestArticles = getPublicLawArticles().slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -35,18 +36,18 @@ export default function Home() {
           Точний онлайн-розрахунок мита, акцизу та ПДВ за актуальною формулою 2026 року.
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <a
+          <Link
             href="/kalkulyator"
             className="rounded-xl bg-brand-500 px-5 py-3 text-base font-semibold text-white transition hover:bg-brand-600"
           >
             Розрахувати вартість зараз
-          </a>
-          <a
+          </Link>
+          <Link
             href="/novyny"
             className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-base font-semibold text-slate-800 transition hover:bg-slate-50"
           >
             Читати оновлення законодавства
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -55,9 +56,9 @@ export default function Home() {
         <p className="mt-3 max-w-3xl text-slate-600">
           Калькулятор розміщений на окремій сторінці для швидкого доступу та фокусованого розрахунку.
         </p>
-        <a href="/kalkulyator" className="mt-5 inline-flex text-sm font-semibold text-brand-700 hover:underline">
+        <Link href="/kalkulyator" className="mt-5 inline-flex text-sm font-semibold text-brand-700 hover:underline">
           Перейти до калькулятора
-        </a>
+        </Link>
       </section>
 
       <section className="rounded-3xl bg-white p-6 shadow-soft sm:p-10">
@@ -65,12 +66,12 @@ export default function Home() {
         <ul className="mt-4 grid gap-3 text-slate-700 sm:grid-cols-2">
           {LANDING_PAGES.map((page) => (
             <li key={page.slug}>
-              <a
+              <Link
                 className="block rounded-xl border border-slate-200 px-4 py-3 transition hover:border-brand-400 hover:bg-brand-50"
                 href={`/${page.slug}`}
               >
                 {page.h1}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -85,18 +86,18 @@ export default function Home() {
           {latestArticles.map((article) => (
             <li key={article.slug} className="rounded-xl border border-slate-200 p-4">
               <p className="text-sm text-slate-500">{article.date}</p>
-              <a href={`/novyny/${article.slug}`} className="mt-1 block font-semibold text-slate-900 hover:text-brand-700">
+              <Link href={`/novyny/${article.slug}`} className="mt-1 block font-semibold text-slate-900 hover:text-brand-700">
                 {article.title}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-        <a
+        <Link
           href="/novyny"
           className="mt-5 inline-flex rounded-xl border border-slate-300 bg-white px-5 py-3 text-base font-semibold text-slate-800 transition hover:bg-slate-50"
         >
           Переглянути всі новини
-        </a>
+        </Link>
       </section>
 
       <section className="rounded-3xl bg-slate-900 p-6 text-slate-100 shadow-soft sm:p-10">
@@ -105,15 +106,15 @@ export default function Home() {
           Добірка ключових сторінок для самостійного вивчення теми розмитнення та перевірки актуальних правил.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <a href="/kalkulyator" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
+          <Link href="/kalkulyator" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
             Калькулятор
-          </a>
-          <a href="/novyny" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
+          </Link>
+          <Link href="/novyny" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
             Новини
-          </a>
-          <a href="/statti" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
+          </Link>
+          <Link href="/statti" className="rounded-xl bg-slate-800 px-4 py-3 text-sm font-semibold hover:bg-slate-700">
             Статті
-          </a>
+          </Link>
         </div>
       </section>
     </main>

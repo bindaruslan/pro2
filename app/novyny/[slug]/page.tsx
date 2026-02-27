@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdsBlock from "@/components/AdsBlock";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedArticles from "@/components/RelatedArticles";
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/content/seo-pages";
-import { getAllLawArticles, getLawArticleBySlug } from "@/utils/laws";
+import { getPublicLawArticleBySlug, getPublicLawArticles } from "@/utils/laws";
 
 interface NewsArticlePageProps {
   params: {
@@ -58,13 +59,13 @@ const FAQ_ITEMS = [
 ];
 
 export function generateStaticParams() {
-  return getAllLawArticles().map((article) => ({
+  return getPublicLawArticles().map((article) => ({
     slug: article.slug,
   }));
 }
 
 export function generateMetadata({ params }: NewsArticlePageProps): Metadata {
-  const article = getLawArticleBySlug(params.slug);
+  const article = getPublicLawArticleBySlug(params.slug);
   if (!article) {
     return {};
   }
@@ -91,7 +92,7 @@ export function generateMetadata({ params }: NewsArticlePageProps): Metadata {
 }
 
 export default function NewsArticlePage({ params }: NewsArticlePageProps) {
-  const article = getLawArticleBySlug(params.slug);
+  const article = getPublicLawArticleBySlug(params.slug);
   if (!article) {
     notFound();
   }
@@ -148,9 +149,9 @@ export default function NewsArticlePage({ params }: NewsArticlePageProps) {
           ) : null}
           <p className="mt-4 text-slate-700">
             Для швидкого практичного розрахунку перейдіть у{" "}
-            <a href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
+            <Link href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
               калькулятор розмитнення авто
-            </a>
+            </Link>
             .
           </p>
 
@@ -181,9 +182,9 @@ export default function NewsArticlePage({ params }: NewsArticlePageProps) {
           ))}
           <p className="mt-4 leading-8 text-slate-700">
             Перед подачею документів радимо повторно перевіряти цифри у{" "}
-            <a href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
+            <Link href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
               калькуляторі розмитнення
-            </a>{" "}
+            </Link>{" "}
             та зберігати проміжний кошторис для порівняння з фінальними платежами.
           </p>
 
@@ -227,13 +228,13 @@ export default function NewsArticlePage({ params }: NewsArticlePageProps) {
             Оновлення у сфері розмитнення авто варто сприймати як підставу для більш точного фінансового планування, а не
             як формальність. Якщо працювати з актуальними даними, перевіреними документами та прозорою формулою
             розрахунку, ризик переплати суттєво знижується. Для практичного старту використайте{" "}
-            <a href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
+            <Link href="/kalkulyator" className="font-semibold text-brand-600 underline underline-offset-4">
               онлайн-калькулятор розмитнення
-            </a>{" "}
+            </Link>{" "}
             і сформуйте персональний сценарій під ваше авто.
           </p>
 
-          <RelatedArticles currentSlug={article.slug} articles={getAllLawArticles()} />
+          <RelatedArticles currentSlug={article.slug} articles={getPublicLawArticles()} />
         </section>
 
         <aside className="hidden lg:block">

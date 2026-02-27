@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { LANDING_PAGES, SITE_URL } from "@/content/seo-pages";
 
@@ -33,13 +34,12 @@ export default function ArticlesIndexPage() {
           <article key={page.slug} className="rounded-2xl bg-white p-6 shadow-soft">
             <h2 className="text-xl font-semibold text-slate-900">{page.h1}</h2>
             <p className="mt-3 text-slate-600">{page.intro}</p>
-            <a href={`/${page.slug}`} className="mt-4 inline-flex text-sm font-semibold text-brand-700 hover:underline">
+            <Link href={`/${page.slug}`} className="mt-4 inline-flex text-sm font-semibold text-brand-700 hover:underline">
               Читати статтю
-            </a>
+            </Link>
           </article>
         ))}
       </section>
     </main>
   );
 }
-

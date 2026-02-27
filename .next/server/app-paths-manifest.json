@@ -1,6 +1,15 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/laws/route": "app/api/laws/route.js",
+  "/api/validate-source/route": "app/api/validate-source/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/admin/page": "app/admin/page.js",
+  "/[slug]/page": "app/[slug]/page.js",
+  "/kalkulyator/page": "app/kalkulyator/page.js",
+  "/novyny/page": "app/novyny/page.js",
+  "/novyny/page/[page]/page": "app/novyny/page/[page]/page.js",
   "/page": "app/page.js",
-  "/novyny/[slug]/page": "app/novyny/[slug]/page.js"
+  "/novyny/[slug]/page": "app/novyny/[slug]/page.js",
+  "/statti/page": "app/statti/page.js"
 }

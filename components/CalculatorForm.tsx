@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import InputField from "@/components/ui/InputField";
 import SelectField from "@/components/ui/SelectField";
@@ -156,19 +157,19 @@ export default function CalculatorForm() {
           <h3 className="text-lg font-semibold text-slate-900">Корисні матеріали</h3>
           <ul className="mt-3 space-y-2 text-slate-700">
             <li>
-              <a href="/novyny" className="font-medium text-brand-700 hover:underline">
+              <Link href="/novyny" className="font-medium text-brand-700 hover:underline">
                 Новини та законодавчі оновлення
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/statti" className="font-medium text-brand-700 hover:underline">
+              <Link href="/statti" className="font-medium text-brand-700 hover:underline">
                 Тематичні статті по розмитненню
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/" className="font-medium text-brand-700 hover:underline">
+              <Link href="/" className="font-medium text-brand-700 hover:underline">
                 Повернутися на головну сторінку
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -176,4 +177,3 @@ export default function CalculatorForm() {
     </section>
   );
 }
-

@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { LANDING_PAGES, SITE_URL } from "@/content/seo-pages";
-import { getAllLawArticles, getPaginationPages } from "@/utils/laws";
+import { getPaginationPages, getPublicLawArticles } from "@/utils/laws";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const lawArticles = getAllLawArticles();
+  const lawArticles = getPublicLawArticles();
   const paginationPages = getPaginationPages().filter((page) => page > 1);
 
   return [

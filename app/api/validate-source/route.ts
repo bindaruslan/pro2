@@ -7,6 +7,14 @@ interface ValidatePayload {
   message: string;
 }
 
+const ALLOWED_HOSTS = new Set([
+  "zakon.rada.gov.ua",
+  "customs.gov.ua",
+  "www.customs.gov.ua",
+  "kmu.gov.ua",
+  "www.kmu.gov.ua",
+]);
+
 export async function GET(request: NextRequest) {
   const url = request.nextUrl.searchParams.get("url");
 
@@ -22,8 +30,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const parsed = new URL(url);
-    if (!/^https?:$/.test(parsed.protocol)) {
-      throw new Error("Непідтримуваний протокол URL.");
+    if (parsed.protocol !== "https:") {
+      throw new Error("Дозволені лише HTTPS-посилання.");
+    }
+
+    if (!ALLOWED_HOSTS.has(parsed.hostname)) {
+      throw new Error("Дозволені лише офіційні домени (Rada, Customs, CMU).");
     }
 
     const controller = new AbortController();
@@ -64,4 +76,3 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(payload, { status: 400 });
   }
 }
-

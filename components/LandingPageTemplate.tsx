@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import type { SeoPageContent } from "@/types/seo";
 
@@ -42,19 +43,19 @@ export default function LandingPageTemplate({ page }: LandingPageTemplateProps) 
         </p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           <li>
-            <a href="/kalkulyator" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
+            <Link href="/kalkulyator" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
               Калькулятор розмитнення
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/novyny" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
+            <Link href="/novyny" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
               Новини законодавства
-            </a>
+            </Link>
           </li>
           <li className="sm:col-span-2">
-            <a href="/statti" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
+            <Link href="/statti" className="block rounded-xl bg-slate-800 px-4 py-3 hover:bg-slate-700">
               Всі тематичні статті
-            </a>
+            </Link>
           </li>
         </ul>
       </section>

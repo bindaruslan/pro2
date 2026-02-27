@@ -62,16 +62,24 @@ export function getAllLawArticles(): LawArticle[] {
   })).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+export function getPublicLawArticles(): LawArticle[] {
+  return getAllLawArticles().filter((item) => item.status !== "Законопроєкт");
+}
+
 export function getLawArticleBySlug(slug: string): LawArticle | undefined {
   return getAllLawArticles().find((item) => item.slug === slug);
 }
 
+export function getPublicLawArticleBySlug(slug: string): LawArticle | undefined {
+  return getPublicLawArticles().find((item) => item.slug === slug);
+}
+
 export function getArticlePageCount(): number {
-  return Math.max(1, Math.ceil(getAllLawArticles().length / ARTICLES_PER_PAGE));
+  return Math.max(1, Math.ceil(getPublicLawArticles().length / ARTICLES_PER_PAGE));
 }
 
 export function getArticlesByPage(page: number): LawArticle[] {
-  const all = getAllLawArticles();
+  const all = getPublicLawArticles();
   const offset = (page - 1) * ARTICLES_PER_PAGE;
   return all.slice(offset, offset + ARTICLES_PER_PAGE);
 }

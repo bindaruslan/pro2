@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PaginationLinks from "@/components/PaginationLinks";
 import { SITE_URL } from "@/content/seo-pages";
@@ -45,12 +46,12 @@ export default function NewsIndexPage() {
             <h2 className="mt-2 text-xl font-semibold text-slate-900">{article.title}</h2>
             <p className="mt-3 text-slate-600">{article.summary}</p>
             <div className="mt-4 flex flex-wrap gap-3 text-sm">
-              <a href={`/novyny/${article.slug}`} className="font-semibold text-brand-700 hover:underline">
+              <Link href={`/novyny/${article.slug}`} className="font-semibold text-brand-700 hover:underline">
                 Читати матеріал
-              </a>
-              <a href="/kalkulyator" className="font-semibold text-brand-700 hover:underline">
+              </Link>
+              <Link href="/kalkulyator" className="font-semibold text-brand-700 hover:underline">
                 Перевірити в калькуляторі
-              </a>
+              </Link>
             </div>
           </article>
         ))}
